@@ -1,0 +1,677 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>محمد أحمد قطب | 9/7</title>
+
+    <style>
+
+        /* =========================
+           الإعدادات العامة
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: white;
+            background: #050816;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           الخلفية المتحركة
+        ========================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 30%, #164e9c 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, #6a1b9a 0%, transparent 30%),
+                #050816;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(5px);
+            opacity: 0.5;
+            animation: move 12s infinite alternate ease-in-out;
+        }
+
+        .circle1 {
+            width: 250px;
+            height: 250px;
+            background: #1976d2;
+            top: 10%;
+            left: 10%;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: #9c27b0;
+            bottom: 5%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .circle3 {
+            width: 180px;
+            height: 180px;
+            background: #00acc1;
+            top: 50%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes move {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(100px, -70px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-70px, 100px) scale(0.9);
+            }
+        }
+
+
+        /* =========================
+           النجوم
+        ========================= */
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                radial-gradient(white 1px, transparent 1px);
+            background-size: 45px 45px;
+            opacity: 0.18;
+            animation: starsMove 20s linear infinite;
+        }
+
+        @keyframes starsMove {
+
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(45px);
+            }
+        }
+
+
+        /* =========================
+           الرأس
+        ========================= */
+
+        header {
+            text-align: center;
+            padding: 80px 20px 50px;
+        }
+
+        header h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #42a5f5;
+        }
+
+        header p {
+            font-size: 22px;
+        }
+
+
+        /* =========================
+           القائمة
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            padding: 18px;
+            text-align: center;
+
+            background: rgba(5, 8, 22, 0.75);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #64b5f6;
+            text-shadow: 0 0 10px #64b5f6;
+        }
+
+
+        /* =========================
+           الأقسام
+        ========================= */
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 35px;
+            margin-bottom: 35px;
+            text-shadow: 0 0 15px #42a5f5;
+        }
+
+
+        /* =========================
+           الصورة
+        ========================= */
+
+        .profile {
+
+            width: 180px;
+            height: 180px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #64b5f6;
+
+            box-shadow:
+                0 0 20px #2196f3,
+                0 0 50px #1976d2;
+
+            animation: profileAnimation 3s infinite alternate;
+        }
+
+        @keyframes profileAnimation {
+
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-15px);
+            }
+        }
+
+
+        /* =========================
+           الأزرار
+        ========================= */
+
+        .button {
+
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            margin: 10px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid rgba(255,255,255,0.3);
+
+            border-radius: 12px;
+
+            background: rgba(33, 150, 243, 0.25);
+
+            backdrop-filter: blur(10px);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            font-size: 16px;
+        }
+
+        .button:hover {
+
+            transform: translateY(-5px) scale(1.05);
+
+            background: rgba(33, 150, 243, 0.55);
+
+            box-shadow:
+                0 0 20px #2196f3,
+                0 0 40px #1976d2;
+        }
+
+
+        /* =========================
+           البطاقات
+        ========================= */
+
+        .cards {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+        }
+
+        .card {
+
+            width: 280px;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.08);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+
+            transform: translateY(-12px);
+
+            box-shadow:
+                0 0 25px rgba(33,150,243,0.5);
+        }
+
+        .card h3 {
+
+            color: #64b5f6;
+
+            margin-bottom: 15px;
+
+            font-size: 23px;
+        }
+
+        .card p {
+
+            line-height: 1.8;
+
+            color: #ddd;
+        }
+
+
+        /* =========================
+           رسالة JavaScript
+        ========================= */
+
+        #message {
+
+            margin-top: 20px;
+
+            font-size: 20px;
+
+            color: #64b5f6;
+
+            min-height: 30px;
+        }
+
+
+        /* =========================
+           الفوتر
+        ========================= */
+
+        footer {
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: rgba(0,0,0,0.4);
+
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+
+        /* =========================
+           الهاتف
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 35px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- الخلفية -->
+    <div class="background">
+
+        <div class="circle circle1"></div>
+
+        <div class="circle circle2"></div>
+
+        <div class="circle circle3"></div>
+
+    </div>
+
+    <div class="stars"></div>
+
+
+    <!-- =========================
+         Header
+    ========================= -->
+
+    <header id="home">
+
+        <!-- يمكنك تغيير الصورة لاحقاً -->
+        <img
+            class="profile"
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400"
+            alt="صورة شخصية">
+
+        <br><br>
+
+        <h1>محمد أحمد قطب</h1>
+
+        <p>الصف 9/7</p>
+
+    </header>
+
+
+    <!-- =========================
+         Navigation
+    ========================= -->
+
+    <nav>
+
+        <a href="#home">الرئيسية</a>
+
+        <a href="#about">من أنا</a>
+
+        <a href="#links">روابط</a>
+
+        <a href="#contact">تواصل معي</a>
+
+    </nav>
+
+
+    <!-- =========================
+         Home
+    ========================= -->
+
+    <section>
+
+        <h2>مرحباً بكم في موقعي 👋</h2>
+
+        <p>
+            أهلاً وسهلاً بكم في موقعي الشخصي.
+        </p>
+
+        <br>
+
+        <a class="button" href="#about">
+            تعرف عليّ
+        </a>
+
+        <a class="button" href="#links">
+            شاهد الروابط
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         About
+    ========================= -->
+
+    <section id="about">
+
+        <h2>من أنا؟</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>👤 الاسم</h3>
+
+                <p>
+                    محمد أحمد قطب
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🎓 الصف</h3>
+
+                <p>
+                    9/7
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>💻 الهوايات</h3>
+
+                <p>
+                    البرمجة والتكنولوجيا
+                    وتعلم أشياء جديدة.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Links
+    ========================= -->
+
+    <section id="links">
+
+        <h2>روابط مهمة 🔗</h2>
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>🏫 وزارة التربية</h3>
+
+                <p>
+                    الموقع الرسمي لوزارة التربية في الكويت.
+                </p>
+
+                <a
+                    class="button"
+                    href="https://www.moe.edu.kw"
+                    target="_blank">
+
+                    زيارة الموقع
+
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🔎 Google</h3>
+
+                <p>
+                    البحث على الإنترنت.
+                </p>
+
+                <a
+                    class="button"
+                    href="https://www.google.com"
+                    target="_blank">
+
+                    فتح Google
+
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>▶️ YouTube</h3>
+
+                <p>
+                    مشاهدة الفيديوهات.
+                </p>
+
+                <a
+                    class="button"
+                    href="https://www.youtube.com"
+                    target="_blank">
+
+                    فتح YouTube
+
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>💻 W3Schools</h3>
+
+                <p>
+                    تعلم HTML و CSS و JavaScript.
+                </p>
+
+                <a
+                    class="button"
+                    href="https://www.w3schools.com"
+                    target="_blank">
+
+                    تعلم البرمجة
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Contact
+    ========================= -->
+
+    <section id="contact">
+
+        <h2>تواصل معي 📞</h2>
+
+        <p>
+            اضغط على الزر للاتصال.
+        </p>
+
+        <br>
+
+        <a
+            class="button"
+            href="tel:97898131">
+
+            📞 اتصل بي
+
+        </a>
+
+
+        <button
+            class="button"
+            onclick="showMessage()">
+
+            ✨ اضغط هنا
+
+        </button>
+
+
+        <p id="message"></p>
+
+    </section>
+
+
+    <!-- =========================
+         Footer
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 محمد أحمد قطب | الصف 9/7
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+
+        function showMessage() {
+
+            const message =
+                document.getElementById("message");
+
+            message.innerHTML =
+                "🎉 شكراً لزيارتك موقعي! أتمنى أن يعجبك.";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
